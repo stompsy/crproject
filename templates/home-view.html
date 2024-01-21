@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ agency_name }} (id: {{ id }})</h1>
+<p>{{ agency_description }}</p>
+<p>{{ agency_url }}</p>
+
+<ul>
+	{% for x in object_list %} {% if x.agency_name %}
+	<li>
+		<a href="/agencies/{{ x.id }}/">{{ x.agency_name }} - {{ x.agency_url }}</a>
+	</li>
+	{% endif %} {% endfor %}
+</ul>
+{% endblock content %}
