@@ -19,7 +19,7 @@ def agencies_search_view(request):
         agency_obj = Agency.objects.get(id=query)
 
     context = {"object": agency_obj}
-    return render(request, "agencies/search.html", context=context)
+    return render(request, "pages/agencies/search.html", context=context)
 
 
 def agencies_create_view(request):
@@ -33,7 +33,7 @@ def agencies_create_view(request):
         )
         context["object"] = agency_object
         context["created"] = True
-    return render(request, "agencies/create.html", context=context)
+    return render(request, "pages/agencies/create.html", context=context)
 
 
 def agencies_detail_view(request, id=None):
@@ -44,4 +44,4 @@ def agencies_detail_view(request, id=None):
         "object": agency_obj,
     }
 
-    return render(request, "agencies/detail.html", context=context)
+    return render(request, "pages/agencies/detail.html", context=context)
