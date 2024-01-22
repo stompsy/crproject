@@ -23,6 +23,7 @@ from .views import home_view
 urlpatterns = [
     path("", home_view),
     path("agencies/", views.agencies_search_view),
+    path("agencies/create/", views.agencies_create_view),
     path("agencies/<int:id>/", views.agencies_detail_view),
     path("admin/", admin.site.urls),
 ]
