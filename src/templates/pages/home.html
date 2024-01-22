@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<div class="mt-6">
+	<h1 class="text-xl">{{ agency_name }} (id: {{ id }})</h1>
+	<p class="mt-2">{{ agency_description }}</p>
+	<p class="mt-2">{{ agency_url }}</p>
+
+	<ul class="mt-6">
+		{% for x in object_list %} {% if x.agency_name %}
+		<li class="my-4 p-2 bg-sky-100 rounded-md">
+			<a href="/agencies/{{ x.id }}/"
+				>{{ x.agency_name }} - {{ x.agency_url }}</a
+			>
+		</li>
+		{% endif %} {% endfor %}
+	</ul>
+</div>
+{% endblock content %}

@@ -2,9 +2,10 @@
 notes.txt
 
 staticfiles-cdn/
-
-.DS_Store
+node_modules/
+local-cdn/
 bin/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %} {% if not created %}
+<div class="mt-10">
+	<h1 class="text-xl font-medium">Add Agency</h1>
+</div>
+<div class="">
+	<form method="POST" action="." class="flex flex-col my-2 gap-2">
+		{% csrf_token %}
+		<input type="text" name="agency_name" placeholder="Agency Name" />
+		<input type="text" name="agency_url" placeholder="Agency Website Address" />
+		<textarea
+			name="agency_description"
+			cols="30"
+			rows="10"
+			placeholder="Agency Description"
+		></textarea>
+		<button
+			type="submit"
+			class="py-2 px-5 w-56 text-white font-medium rounded-md bg-green-700 hover:bg-green-800"
+		>
+			Create Agency
+		</button>
+	</form>
+</div>
+{% else %}
+
+<h1 class="text-xl font-medium mt-6 mb-2">Your Agency was created.</h1>
+<a class="p-2 rounded-md bg-sky-100" href="/agencies/{{ object.id }}/"
+	>{{ object.agency_name }} - {{ object.agency_url }}</a
+>
+{% endif %} {% endblock %}

@@ -1,0 +1,4 @@
+{% extends "base.html" %} {% block content %} {% if object %}
+<h1 class="text-xl font-medium mt-6 mb-2">{{ object.agency_name }}</h1>
+<p class="p-2 rounded-md bg-sky-100">{{ object.agency_description }}</p>
+{% endif %} {% endblock %}
