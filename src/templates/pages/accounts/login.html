@@ -13,14 +13,20 @@
 				src="{% static 'images/copa.png' %}"
 				alt="City of Port Angeles Logo"
 			/>
+			{% if not request.user.is_authenticated %}
 			<h1 class="mt-12 text-white text-xl font-medium">Please sign in</h1>
-			<form class="mt-4">
-				{% csrf_token %}
+			<form method="POST" class="mt-4">
+				{% csrf_token %} {% if error %}
+				<div>
+					<p class="bg-red-500 text-white p-2 rounded-md mb-4">{{ error }}</p>
+				</div>
+				{% endif %}
 				<div class="">
 					<div class="flex flex-col">
 						<input
 							type="text"
 							id="username"
+							name="username"
 							placeholder="Username"
 							required
 							class="rounded-t-md bg-neutral-900"
@@ -28,7 +34,7 @@
 					</div>
 					<div class="flex flex-col mt-1">
 						<input
-							type="text"
+							type="password"
 							id="password"
 							name="password"
 							placeholder="Password"
@@ -38,7 +44,7 @@
 					</div>
 					<div class="flex mt-4">
 						<div class="">
-							<input id="remember" type="checkbox" value="" required />
+							<input id="remember" type="checkbox" value="" />
 							<label for="remember" class="text-white pl-1">Remember me</label>
 						</div>
 					</div>
@@ -51,6 +57,16 @@
 					<p class="mt-10 text-gray-300 text-center">© 2024 d.brian.gerdes</p>
 				</div>
 			</form>
+			{% else %}
+			<div>
+				<p
+					class="text-white p-3 rounded-md mb-4 mt-12 bg-neutral-900 border-2 border-black"
+				>
+					You're already logged in. Would you like to
+					<a class="underline-offset-2 underline" href="/logout/">log out</a>?
+				</p>
+			</div>
+			{% endif %}
 		</div>
 	</body>
 </html>

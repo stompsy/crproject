@@ -18,11 +18,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 
-from accounts.views import (
-    login_view,
-    logout_view, 
-    register_view
-)
+from accounts.views import login_view, logout_view, register_view
 from agencies.views import (
     agencies_create_view,
     agencies_detail_view,
@@ -36,9 +32,9 @@ urlpatterns = [
     path("agencies/create/", agencies_create_view, name="agencies-create"),
     path("agencies/<int:id>/", agencies_detail_view, name="agencies-detail"),
     path("admin/", admin.site.urls),
-    path("login/", login_view, name="login"),
-    path("logout/", logout_view, name="logout"),
-    path("register/", register_view, name="register"),
+    path("login/", login_view),
+    path("logout/", logout_view),
+    path("register/", register_view),
 ]
 
 if settings.DEBUG:
