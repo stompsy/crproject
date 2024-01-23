@@ -1,43 +1,56 @@
-{% extends "base.html" %} {% block content %}
-<div class="max-w-sm mx-auto mt-6">
-	<form class="">
-		{% csrf_token %}
-		<div class="">
-			<div class="flex flex-col">
-				<label for="username" class="">Your name</label>
-				<input
-					type="text"
-					id="username"
-					class=""
-					placeholder="Username"
-					required
-				/>
-			</div>
-			<div class="flex flex-col mt-6">
-				<label for="password" class="">Your password</label>
-				<input
-					type="text"
-					id="password"
-					name="password"
-					class=""
-					placeholder="Password"
-					required
-				/>
-			</div>
-			<div class="flex mt-6">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Community Resource Project</title>
+		{% include "head/css.html" %}
+	</head>
+	<body class="grid place-items-center h-screen bg-neutral-800">
+		<div class="max-w-xs mx-auto p-4">
+			<img
+				src="{% static 'images/copa.png' %}"
+				alt="City of Port Angeles Logo"
+			/>
+			<h1 class="mt-12 text-white text-xl font-medium">Please sign in</h1>
+			<form class="mt-4">
+				{% csrf_token %}
 				<div class="">
-					<input id="remember" type="checkbox" value="" class="" required />
-					<label for="remember" class="">Remember me</label>
+					<div class="flex flex-col">
+						<input
+							type="text"
+							id="username"
+							placeholder="Username"
+							required
+							class="rounded-t-md bg-neutral-900"
+						/>
+					</div>
+					<div class="flex flex-col mt-1">
+						<input
+							type="text"
+							id="password"
+							name="password"
+							placeholder="Password"
+							required
+							class="rounded-b-md bg-neutral-900"
+						/>
+					</div>
+					<div class="flex mt-4">
+						<div class="">
+							<input id="remember" type="checkbox" value="" required />
+							<label for="remember" class="text-white pl-1">Remember me</label>
+						</div>
+					</div>
+					<button
+						type="submit"
+						class="w-full mt-6 bg-sky-700 hover:bg-sky-800 text-white font-medium rounded-md py-2 px-4"
+					>
+						Sign in
+					</button>
+					<p class="mt-10 text-gray-300 text-center">© 2024 d.brian.gerdes</p>
 				</div>
-			</div>
-			<button
-				type="submit"
-				class="mt-6 bg-sky-700 hover:bg-sky-800 text-white font-medium rounded-md py-2 px-4"
-			>
-				Login
-			</button>
+			</form>
 		</div>
-	</form>
-</div>
-
-{% endblock %}
+	</body>
+</html>
