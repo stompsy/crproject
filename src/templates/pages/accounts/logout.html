@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Community Resource Project</title>
+		{% include "head/css.html" %}
+	</head>
+	<body class="grid place-items-center h-screen bg-gray-900">
+		<div class="max-w-xs mx-auto p-4">
+			{% if request.user.is_authenticated %}
+			<h1 class="text-center text-white text-xl font-medium">
+				Thank you for visiting!
+			</h1>
+			<form method="POST" class="mt-12">
+				{% csrf_token %}
+				<div>
+					<p class="text-white font-medium">Are you sure you want to logout?</p>
+					<button
+						class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						type="submit"
+					>
+						Yes, logout.
+					</button>
+				</div>
+			</form>
+		</div>
+		{% else %}
+		<div>
+			<p
+				class="text-white p-3 rounded-md mb-4 mt-12 bg-neutral-900 border-2 border-black"
+			>
+				You're not logged in. Would you like to
+				<a class="underline-offset-2 underline" href="/login/">login</a>?
+			</p>
+		</div>
+		{% endif %}
+	</body>
+</html>

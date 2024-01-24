@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # My apps
     "agencies",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "crp.urls"
+LOGIN_URL = "/login/"
 
 TEMPLATES = [
     {
