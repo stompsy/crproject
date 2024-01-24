@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 
@@ -17,6 +17,9 @@ def login_view(request):
 
 
 def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("/login")
     return render(request, "pages/accounts/logout.html", {})
 
 

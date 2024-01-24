@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "crp.urls"
+LOGIN_URL = "/login/"
 
 TEMPLATES = [
     {

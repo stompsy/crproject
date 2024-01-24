@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .models import Agency
@@ -22,6 +23,7 @@ def agencies_search_view(request):
     return render(request, "pages/agencies/search.html", context=context)
 
 
+@login_required
 def agencies_create_view(request):
     context = {}
     if request.method == "POST":
