@@ -1,9 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from .forms import AgencyForm
 from .models import Agency
-
-# Create your views here.
 
 
 def agencies_search_view(request):
@@ -25,16 +24,11 @@ def agencies_search_view(request):
 
 @login_required
 def agencies_create_view(request):
-    context = {}
-    if request.method == "POST":
-        name = request.POST.get("agency_name")
-        url = request.POST.get("agency_url")
-        description = request.POST.get("agency_description")
-        agency_object = Agency.objects.create(
-            agency_name=name, agency_url=url, agency_description=description
-        )
-        context["object"] = agency_object
-        context["created"] = True
+    form = AgencyForm(request.POST or None)
+    context = {"form": form}
+    if form.is_valid():
+        agency_object = form.save()
+        context["form"] = AgencyForm()
     return render(request, "pages/agencies/create.html", context=context)
 
 
