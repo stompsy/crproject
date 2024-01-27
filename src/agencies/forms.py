@@ -16,5 +16,8 @@ class AgencyForm(forms.ModelForm):
         agency_name = data.get("agency_name")
         qs = Agency.objects.filter(agency_name__icontains=agency_name)
         if qs.exists():
-            self.add_error("agency_name", f"{agency_name} is already in use.")
+            self.add_error(
+                "agency_name",
+                f'"{agency_name}" is already in use. Please use a different name.',
+            )
         return data
