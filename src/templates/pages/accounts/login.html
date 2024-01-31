@@ -9,22 +9,23 @@
 	</head>
 	<body class="grid place-items-center h-screen bg-gray-900">
 		<div class="max-w-xs mx-auto p-4">
+			<h1 class="text-xl text-white text-center font-bold">Login</h1>
 			{% if not request.user.is_authenticated %}
-			<form method="POST" class="mt-4">
-				{% csrf_token %}
-				<div class="mb-4">
-					{{ form.as_p}}
+			<div class="mt-6 w-full">
+				<form method="POST" class="mt-4 w-full">
+					{% csrf_token %} {{ form.as_p }}
 					<button
 						type="submit"
-						class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 					>
 						Sign in
 					</button>
-					<p class="mt-10 text-gray-300 text-center">© 2024 crproject</p>
-				</div>
-			</form>
-
-			<p>Need an account? Please <a href="/register">Register</a></p>
+				</form>
+				<p class="mt-6 text-white text-center">
+					Need an account? Please
+					<a class="underline" href="/register">Register</a>
+				</p>
+			</div>
 
 			{% else %}
 			<div>
@@ -37,5 +38,6 @@
 			</div>
 			{% endif %}
 		</div>
+		<p class="mt-10 text-gray-300 text-center">© 2024 crproject</p>
 	</body>
 </html>
